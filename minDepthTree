@@ -1,0 +1,32 @@
+/*
+ * Find the minimun depth of a binary tree
+/*
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    int minDepth(TreeNode* root) {
+    int t, minl, minr;
+    if (root== NULL) return 0;
+     if (root->left == NULL && root->right == NULL ) {
+        return 1;
+     }
+     else {
+     minl = minDepth(  root-> left );
+     minr = minDepth( root-> right);
+     if( minl==0 ) return minr+1;
+     if (minr==0 ) return minl+1;
+     t =  ( minl < minr) ? minl : minr;
+      return t+1;
+    }
+    
+    }
+};
